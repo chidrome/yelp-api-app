@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Auth BoilerPlate</title>
+	<link rel="stylesheet" type="text/css" href="/style.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+	<nav>
+		<div class="nav-wrapper">
+			<a href="/" class="brand-logo" class="left"><i class="material-icons">cloud</i>Paolo</a>
+				<% if(!user) { %>
+					<a href="/auth/signup" class="right">Sign Up</a>
+					<a href="/auth/login" class="right">Login</a>
+				<% } else { %>
+					<a href="/auth/logout" class="right">Logout</a>
+					<% if(user.admin) { %>
+						<a href="/profile/admins" class="right">Admin Page</a>
+					<% } %>
+					<a href="/profile" class="right">Profile</a>
+					<li class="right normal">Hello, <%= user.first_name %></li>
+				<% } %>
+				
+		</div>
+	</nav>
+	<div class="container">
+		<% include partials/alerts %>
+		<%- body %>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+		    var elems = document.querySelectorAll('.datepicker');
+		    var instances = M.Datepicker.init(elems, {
+		    	autoClose: false,
+		    	maxDate: new Date(),
+		    	yearRange: [1985, 2019]
+		    });
+  		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<% if(alerts.error) { %>
+	<div class="row center">
+		<div class="col s4 center">
+			<div class="card red darken-1">
+				<div class="card-content white-text">
+					<span class="card-title">ERROR!</span>
+					<% alerts.error.forEach((msg)=>{ %>
+					<p><%= msg %></p>
+					<% }); %>
+				</div>
+				<div class="card-action white-text">
+					<p class="closeable">Close</p>
+				</div>
+			</div>
+		</div>
+	</div>
+<% } %>
+
+<% if(alerts.success) { %>
+	<div class="row center">
+		<div class="col s4 center-align">
+			<div class="card green lighten-4">
+				<div class="card-content green-text">
+					<span class="card-title">Succes</span>
+					<% alerts.success.forEach((msg)=>{ %>
+					<p><%= msg %></p>
+					<% }); %>
+				</div>
+				<div class="card-action white-text">
+					<p class="closeable">Close</p>
+				</div>
+			</div>
+		</div>
+	</div>
+<% } %>
+
+<script>
+	[...document.getElementsByClassName('closeable')].forEach((element)=>{
+		element.addEventListener('click', ()=> {
+			document.getElementsByClassName('card')[0].style.display='none';
+		});
+	});
+</script>

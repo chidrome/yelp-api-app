@@ -1,0 +1,22 @@
+<h2>Log In</h2>
+
+<!-- TODO: Username and Password form -->
+<div class="row">
+	<form action="/auth/login" method="POST" class="col s12">
+		<div class="row">
+			<div class="input-field col s12">
+				<label>Email</label>
+				<input type="email" name="email" placeholder="Your Email" autocomplete="off">
+			</div>
+		</div>
+		<div class="row">
+			<div class="input-field col s12">
+				<label>Password</label>
+				<input type="password" name="password" placeholder="Your Password" autocomplete="off" class="validate">
+			</div>
+		</div>
+		<button class="btn waves-effect waves-light" type="submit" name="action">Log In
+			<i class="material-icons right">send</i>
+		</button>
+	</form>
+</div>
