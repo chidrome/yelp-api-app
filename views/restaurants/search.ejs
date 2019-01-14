@@ -2,13 +2,13 @@
 
 <div class="container">
     <h2>Search for you restaurant</h2>
-    <form method="POST" action="restaurants/search">
+    <form method="POST" action="/restaurants/search">
         <div class="row">
-            <div class="input-field col s5">
-                <input type="text" name="city" placeholder="City">
+            <div class="input-field col s9">
+                <input type="text" name="restaurantName" placeholder="Restaurant, Cuisine">
             </div>
-            <div class="input-field col s5">
-                <input  type="text" name="state" placeholder="State">  
+            <div class="input-field col s3">
+                <input  type="text" name="cityState" placeholder="City, State">  
             </div>
         </div>
         <input type="submit" value="Search">

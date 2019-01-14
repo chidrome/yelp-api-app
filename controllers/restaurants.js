@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var request = require('request');
 
 // set up yelp middleware to make requests
 var yelp = require('yelp-fusion');
@@ -15,10 +14,11 @@ router.get('/',(req, res)=>{
 
 router.post('/search', (req, res)=>{
     client.search({
-        term: 'four barrel coffe',
-        location: 'san francisco, ca'
+        term: req.body.restaurantName,
+        location: req.body.cityState
     })
-    .then((results)=>{
+    .then((data)=>{
+        var results = JSON.parse(data.body)
         console.log(results)
         res.send(results);
     })
