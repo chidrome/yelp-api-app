@@ -8,6 +8,7 @@ var layouts = require('express-ejs-layouts');
 var parser = require('body-parser');
 var passport = require('./config/passportConfig');
 var session = require('express-session');
+var yelp = require('yelp-fusion');
 
 // Declare express app
 var app = express();
@@ -48,6 +49,7 @@ app.get('/', function(req, res){
 // Include any controllers we need
 app.use('/auth', require('./controllers/auth'));
 app.use('/profile', require('./controllers/profiles'))
+app.use('/restaurants', require('./controllers/restaurants'));
 
 // Declare your listener
 app.listen(8000, function(){

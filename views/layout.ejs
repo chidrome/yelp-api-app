@@ -9,16 +9,17 @@
 </head>
 <body>
 	<nav>
-		<div class="nav-wrapper">
-			<a href="/" class="brand-logo" class="left"><i class="material-icons">cloud</i>Home</a>
+		<div class="nav-wrapper navbar-transition cool-navbar">
 				<% if(!user) { %>
 					<a href="/auth/signup" class="right">Sign Up</a>
 					<a href="/auth/login" class="right">Login</a>
+					<a href="/"><i class="material-icons left">cloud</i>Home</a>
 				<% } else { %>
 					<a href="/auth/logout" class="right">Logout</a>
 					<% if(user.admin) { %>
 						<a href="/profile/admins" class="right">Admin Page</a>
 					<% } %>
+					<a href="/"><i class="material-icons left">cloud</i>
 					<a href="/profile" class="left"><%= user.first_name %></a>
 				<% } %>
 				
