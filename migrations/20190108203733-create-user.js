@@ -29,6 +29,9 @@ module.exports = {
       bio: {
         type: Sequelize.TEXT
       },
+      favorite_cuisine: {
+        type: Sequelize.STRING
+      },
       admin: {
         type: Sequelize.BOOLEAN
       },

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Auth BoilerPlate</title>
+	<title>Yelp API</title>
 	<link rel="stylesheet" type="text/css" href="/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -10,7 +10,7 @@
 <body>
 	<nav>
 		<div class="nav-wrapper">
-			<a href="/" class="brand-logo" class="left"><i class="material-icons">cloud</i>Paolo</a>
+			<a href="/" class="brand-logo" class="left"><i class="material-icons">cloud</i>Home</a>
 				<% if(!user) { %>
 					<a href="/auth/signup" class="right">Sign Up</a>
 					<a href="/auth/login" class="right">Login</a>
@@ -19,8 +19,7 @@
 					<% if(user.admin) { %>
 						<a href="/profile/admins" class="right">Admin Page</a>
 					<% } %>
-					<a href="/profile" class="right">Profile</a>
-					<li class="right normal">Hello, <%= user.first_name %></li>
+					<a href="/profile" class="left"><%= user.first_name %></a>
 				<% } %>
 				
 		</div>
