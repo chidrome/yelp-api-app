@@ -19,13 +19,17 @@ router.post('/search', (req, res)=>{
     })
     .then((data)=>{
         var results = JSON.parse(data.body)
-        console.log(results)
-        res.send(results);
+        var businesses = results.businesses //JSON.parse(data.body.businesses)
+        res.render('restaurants/search-results', { results: results, business: businesses });
     })
     .catch((error)=>{
         console.log('ERROR!', error);
     })
 })
+
+// router.get('/favorites', (req, res)=>{
+//     res.render('restaurants/search-results')
+// })
 
 
 

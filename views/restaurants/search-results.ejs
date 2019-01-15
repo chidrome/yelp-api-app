@@ -1,1 +1,29 @@
 <h2>Restaurant Search Results go here</h2>
+
+<div class="container">
+    <div class="row">
+    <% business.forEach((b)=>{ %>
+        <div class="col s12 m3">
+            <div class="card">
+                <div class="card-image">
+                    <img class="card-picture" src="<%= b.image_url %>">
+                    <span class="card-title"><%= b.name %></span>
+                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                </div>
+                <div class="card-content">
+                    <% var addressArray = b.location.display_address %>
+                    <p>Address:</p>
+                    <% addressArray.forEach((a)=>{ %>
+                        <p><%= a %></p>
+                    <% }) %>
+                    <p>Phone: <%= b.display_phone %></p>
+                    <div class="right">
+                        <img class="yelp-logo" src="../img/Yelp_trademark_RGB.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+    </div>
+</div>
+

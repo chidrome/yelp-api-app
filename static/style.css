@@ -17,11 +17,33 @@ nav a:hover {
 	color: rgb(6, 101, 133);
 }
 
-.normal {
-	list-style: none;
-	margin: 0 15px 0 0;
-}
-
 a {
 	margin: 0px 15px 0 0 !important;
+	vertical-align: bottom !important;
+}
+
+i {
+	vertical-align: middle !important;
+	display: inline-block !important;
+}
+
+.card-picture {
+	width: auto;
+	height: 300px;
+}
+
+.container {
+	width: 100% !important;
+}
+
+.card-title {
+	font-weight: 600 !important;
+}
+
+.yelp-logo {
+	position: absolute;
+	width: 60px;
+	height: auto;
+	right: 2%;
+	bottom: 0%;
 }
