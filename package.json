@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@mapbox/mapbox-sdk": "^0.5.0",
     "bcrypt": "^3.0.3",
     "body-parser": "^1.18.3",
     "connect-flash": "^0.1.1",
@@ -20,10 +21,27 @@
     "express-session": "^1.15.6",
     "fs": "0.0.1-security",
     "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
     "passport-local": "^1.0.0",
     "pg": "^7.7.1",
     "request": "^2.88.0",
     "sequelize": "^4.42.0",
     "yelp-fusion": "^2.2.1"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/body-parser": "^1.17.0",
+    "@types/connect-flash": "0.0.34",
+    "@types/dotenv": "^6.1.0",
+    "@types/ejs": "^2.6.1",
+    "@types/express": "^4.16.0",
+    "@types/express-ejs-layouts": "^2.3.1",
+    "@types/express-session": "^1.15.11",
+    "@types/passport": "^1.0.0",
+    "@types/passport-facebook": "^2.1.8",
+    "@types/passport-local": "^1.0.33",
+    "@types/pg": "^7.4.11",
+    "@types/request": "^2.48.1",
+    "@types/sequelize": "^4.27.33"
   }
 }

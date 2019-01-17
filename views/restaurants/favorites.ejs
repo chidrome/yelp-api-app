@@ -1,0 +1,18 @@
+<div class="row">
+<h3>My Favorites</h3>
+    <div class="col s4">
+        <% results.restaurants.forEach((r)=>{ %>
+            <li>
+                <%= r.name %>
+                <form action="/favorites/restaurant/zoom" method="POST">
+                <input type="hidden" name="lat" value="<%= r.lat %>">
+                <input type="hidden" name="long" value="<%= r.long %>">
+                <input type="submit" value="More Info">
+                </form>
+            </li>
+        <% }) %>
+    </div>
+    <div class="col s8">
+        <% include ../map.ejs %>
+    </div>
+</div>

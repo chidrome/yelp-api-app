@@ -50,6 +50,8 @@ app.get('/', function(req, res){
 app.use('/auth', require('./controllers/auth'));
 app.use('/profile', require('./controllers/profiles'))
 app.use('/restaurants', require('./controllers/restaurants'));
+app.use('/favorites', require('./controllers/favorites'));
+app.use('/friends', require('./controllers/friends'));
 
 // Declare your listener
 app.listen(8000, function(){

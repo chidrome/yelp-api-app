@@ -1,0 +1,40 @@
+
+<h2><%= user.first_name %> <%= user.last_name %></h2>
+
+<div class="row">
+    <div class="col s4 profilePic">
+        <img src="<%= user.profileImg %>">
+    </div>
+    <div class="col s2">
+        <p><strong>Username: </strong><%= user.username %></p>
+        <p><strong>Admin Status: </strong><%= user.admin ? 'Admin' : 'User' %></p>
+    </div>
+    <div class="col s4">
+        <h5><%= user.first_name %>'s Bio:</h5>
+        <p><%= user.bio %></p>
+    </div>
+</div>
+<div class="row">
+    <h3>My Favorite Restaurants</h3>
+    <% restaurants.forEach((r)=>{ %>
+        <div class="col s4">
+            <h6 class="header"><%= r.name %></h6>
+            <div class="card horizontal">
+                <div class="card-image">
+                    <img src="<%= r.image_url %>">
+                </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <p>Yelp Rating: <%= r.yelp_rating %></p>
+                        <p>Friends Rating: *insert friend ratings here*</p>
+                    </div>
+                    <div class="card-action">
+                        <a href="#">More Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% }) %>
+</div>
+
+        

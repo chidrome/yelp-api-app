@@ -1,14 +1,32 @@
-<h2>Restaurant Search Results go here</h2>
 
-<div class="container">
+
+    <h2>Restaurant Search Results go here</h2>
     <div class="row">
     <% business.forEach((b)=>{ %>
         <div class="col s12 m3">
-            <div class="card">
+            <div class="card z-depth-5">
                 <div class="card-image">
                     <img class="card-picture" src="<%= b.image_url %>">
-                    <span class="card-title"><%= b.name %></span>
-                    <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">add</i></a>
+                    <span class="card-title title-results"><%= b.name %></span>
+                    <form method="POST" action="/favorites/add">
+                        <input type="hidden" name="restaurantName" value="<%= b.name %>">
+                        <input type="hidden" name="address1" value="<%= b.location.address1 %>">
+                        <input type="hidden" name="address2" value="<%= b.location.address2 %>">
+                        <input type="hidden" name="address3" value="<%= b.location.address3 %>">
+                        <input type="hidden" name="city" value="<%= b.location.city %>">
+                        <input type="hidden" name="state" value="<%= b.location.state %>">
+                        <input type="hidden" name="zip" value="<%= b.location.zip %>">
+                        <input type="hidden" name="country" value="<%= b.location.country %>">
+                        <input type="hidden" name="phone" value="<%= b.display_phone %>">
+                        <input type="hidden" name="lat" value="<%= b.coordinates.latitude %>">
+                        <input type="hidden" name="long" value="<%= b.coordinates.longitude %>">
+                        <input type="hidden" name="yelpRating" value="<%= b.rating %>">
+                        <input type="hidden" name="imageURL" value="<%= b.image_url %>">
+                        <input type="hidden" name="userId" value="<%= user.id %>">
+                        <button class="btn-floating halfway-fab waves-effect waves-light red" type="submit">
+                                <i class="material-icons">add</i>
+                        </button>
+                    </form>
                 </div>
                 <div class="card-content">
                     <% var addressArray = b.location.display_address %>
@@ -25,5 +43,5 @@
         </div>
     <% }) %>
     </div>
-</div>
+
 

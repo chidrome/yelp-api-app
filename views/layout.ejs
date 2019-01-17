@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset='utf-8' />
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.css' rel='stylesheet' />
 	<title>Yelp API</title>
 	<link rel="stylesheet" type="text/css" href="/style.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.52.0/mapbox-gl.js'></script>
 </head>
 <body>
 	<nav>
 		<div class="nav-wrapper navbar-transition cool-navbar">
 				<a href="/" class="left">Home</a>
+				<a href="/restaurants" class="left">Search<i class="material-icons">search</i></a>
 				<% if(!user) { %>
 					<a href="/auth/signup" class="right">Sign Up</a>
 					<a href="/auth/login" class="right">Login</a>
-					<a href="/restaurants" class="left">Search<i class="material-icons">search</i></a>
 				<% } else { %>
-					<a href="/favorites" class="right">Favorites</a>
 					<a href="/auth/logout" class="right">Logout</a>
+					<a href="/favorites" class="right">Favorites</a>
 					<% if(user.admin) { %>
 						<a href="/profile/admins" class="right">Admin Page</a>
 					<% } %>
-					<a href="/profile" class="left"><%= user.first_name %></a>
+					<a href="/profile" class="right"><%= user.first_name %></a>
+					<a href="/friends" class="right">Friends</a>
 				<% } %>
 				
 		</div>

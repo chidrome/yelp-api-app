@@ -9,7 +9,7 @@ router.get('/login', (req, res) => {
 
 router.post('/login', passport.authenticate('local', {
 	successRedirect: '/profile',
-	successFlash: 'Login successful!',
+	// successFlash: 'Login successful!',
 	failureRedirect: '/auth/login',
 	failureFlash: 'Invalid Credentials'
 }));
@@ -75,6 +75,18 @@ router.get('/logout', (req, res)=>{
 	req.flash('success', 'Successful Logout! Come back again!');
 	res.redirect('/');
 });
+
+// FACEBOOK SPECIFIC ROUTES
+router.get('/facebook', passport.authenticate('facebook', {
+	scope: ['public_profile', 'email']
+}))
+
+router.get('/callback/facebook', passport.authenticate('facebook', {
+	successRedirect: '/profile',
+	// successFlash: 'Login successful!',
+	failureRedirect: '/auth/login',
+	failureFlash: 'Ooops, Facebook has failed you.'
+}))
 
 
 module.exports = router;

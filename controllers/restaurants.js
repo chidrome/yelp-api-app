@@ -27,10 +27,6 @@ router.post('/search', (req, res)=>{
     })
 })
 
-// router.get('/favorites', (req, res)=>{
-//     res.render('restaurants/search-results')
-// })
-
 
 
 module.exports = router;

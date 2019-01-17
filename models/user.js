@@ -26,6 +26,8 @@ module.exports = (sequelize, DataTypes) => {
     dob: DataTypes.DATE,
     bio: DataTypes.TEXT,
     favorite_cuisine: DataTypes.STRING,
+    facebookId: DataTypes.STRING,
+    facebookToken: DataTypes.STRING,
     admin: DataTypes.BOOLEAN,
     profileImg: {
       type: DataTypes.TEXT,
@@ -37,8 +39,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {
     hooks: {
-      beforeCreate: (pendingUser)=>{
-        if(pendingUser){
+      beforeCreate: function(pendingUser){
+        if(pendingUser && pendingUser.password){
           var hash = bcrypt.hashSync(pendingUser.password, 12);
           pendingUser.password = hash;
         }
@@ -47,6 +49,7 @@ module.exports = (sequelize, DataTypes) => {
   });
   user.associate = function(models) {
     // associations can be defined here
+    models.user.belongsToMany(models.restaurant, { through: 'restaurantUser' })
   };
   user.prototype.validPassword = function(typedPassword){
     return bcrypt.compareSync(typedPassword, this.password);

@@ -32,6 +32,12 @@ module.exports = {
       favorite_cuisine: {
         type: Sequelize.STRING
       },
+      facebookId: {
+        type: Sequelize.STRING
+      },
+      facebookToken: {
+        type: Sequelize.STRING
+      },
       admin: {
         type: Sequelize.BOOLEAN
       },
