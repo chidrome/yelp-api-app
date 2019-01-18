@@ -7,9 +7,14 @@
     <div class="col s2">
         <p><strong>Username: </strong><%= userProfile.username %></p>
         <p><strong>Admin Status: </strong><%= userProfile.admin ? 'Admin' : 'User' %></p>
+        <form action="/friends/add" method="POST">
+            <input type="hidden" name="friendId" value="<%= userProfile.id %>">
+            <input type="submit" value="Add Friend">
+        </form>
     </div>
     <div class="col s4">
         <h5><%= userProfile.first_name %>'s Bio:</h5>
         <p><%= userProfile.bio %></p>
     </div>
+    
 </div>

@@ -35,7 +35,15 @@ router.post('/add', loggedIn, (req, res)=>{
         db.user.findById(req.user.id)
         .then((user)=>{
             user.addFriend(friend)
-            res.redirect('/friends')
+            db.user.findById(friend.id)
+            .then((user)=>{
+                user.addFriend(req.user)
+                res.redirect('/friends')
+            })
+            .catch((error)=>{
+                console.log('ERROR associating friend back', error)
+            })
+            
         })
         .catch((error)=>{
             console.log('ERROR adding friend', error)

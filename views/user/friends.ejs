@@ -9,7 +9,15 @@
     </form>
 
 <h3>Found Friends:</h3>
-<p><%= foundFriend.first_name %> <%= foundFriend.last_name %></p>
+<% if (!foundFriend) { %>
+    <p>Search for friends<p>
+<% } else { %>
+    <form action="/profile/friends/<%= foundFriend.first_name %><%= foundFriend.last_name %>" method="POST">
+        <input type="hidden" name="friendUserId" value="<%= foundFriend.id %>">
+        <input class="profileButton" type="submit" value="<%= foundFriend.first_name %> <%= foundFriend.last_name %>">
+    </form>
+<% } %>
+
 
 <h3>My friends will go here</h3>
 
