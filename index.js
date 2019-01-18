@@ -54,6 +54,6 @@ app.use('/favorites', require('./controllers/favorites'));
 app.use('/friends', require('./controllers/friends'));
 
 // Declare your listener
-app.listen(8000, function(){
+app.listen(process.env.PORT || 8000, function(){
 	console.log('Now listening to the smooth sounds of port 8000');
 })
