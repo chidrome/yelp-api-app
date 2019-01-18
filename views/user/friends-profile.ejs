@@ -1,4 +1,4 @@
-<h2><%= userProfile.first_name %> <%= userProfile.last_name %></h2>
+<h2><%= firstCapitalization(userProfile.first_name) %> <%= firstCapitalization(userProfile.last_name) %></h2>
 
 <div class="row">
     <div class="col s4 profilePic">
@@ -7,14 +7,38 @@
     <div class="col s2">
         <p><strong>Username: </strong><%= userProfile.username %></p>
         <p><strong>Admin Status: </strong><%= userProfile.admin ? 'Admin' : 'User' %></p>
-        <form action="/friends/add" method="POST">
-            <input type="hidden" name="friendId" value="<%= userProfile.id %>">
-            <input type="submit" value="Add Friend">
-        </form>
+            <form action="/friends/add" method="POST">
+                <input type="hidden" name="friendId" value="<%= userProfile.id %>">
+                <input type="submit" value="Add Friend">
+            </form>
     </div>
     <div class="col s4">
-        <h5><%= userProfile.first_name %>'s Bio:</h5>
+        <h5><%= firstCapitalization(userProfile.first_name) %>'s Bio:</h5>
         <p><%= userProfile.bio %></p>
     </div>
-    
+</div>
+
+<div>
+    <div class="row">
+        <h5><%= firstCapitalization(userProfile.first_name) %>'s Favorite Restaurants</h5>
+        <% friendsRestaurants.forEach((r)=>{ %>
+            <div class="col s4">
+                <h6 class="header"><%= r.name %></h6>
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img src="<%= r.image_url %>">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <p>Yelp Rating: <%= r.yelp_rating %></p>
+                            <p>Friends Rating: *insert friend ratings here*</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="#">More Info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }) %>
+    </div>
 </div>

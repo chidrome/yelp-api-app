@@ -12,9 +12,9 @@
 <% if (!foundFriend) { %>
     <p>Search for friends<p>
 <% } else { %>
-    <form action="/profile/friends/<%= foundFriend.first_name %><%= foundFriend.last_name %>" method="POST">
+    <form action="/profile/friends/<%= firstCapitalization(foundFriend.first_name) %><%= firstCapitalization(foundFriend.last_name) %>" method="POST">
         <input type="hidden" name="friendUserId" value="<%= foundFriend.id %>">
-        <input class="profileButton" type="submit" value="<%= foundFriend.first_name %> <%= foundFriend.last_name %>">
+        <input class="profileButton" type="submit" value="<%= firstCapitalization(foundFriend.first_name) %> <%= firstCapitalization(foundFriend.last_name) %>">
     </form>
 <% } %>
 
@@ -23,9 +23,9 @@
 
 <% if(friends && friends.length > 0){ %>
     <% friends.forEach((friend) => { %>
-        <form action="/profile/friends/<%= friend.first_name %><%= friend.last_name %>" method="POST">
+        <form action="/profile/friends/<%= firstCapitalization(friend.first_name) %><%= firstCapitalization(friend.last_name) %>" method="POST">
             <input type="hidden" name="friendUserId" value="<%= friend.id %>">
-            <input class="profileButton" type="submit" value="<%= friend.first_name %> <%= friend.last_name %>">
+            <input class="profileButton" type="submit" value="<%= firstCapitalization(friend.first_name) %> <%= firstCapitalization(friend.last_name) %>">
         </form>
     <% }) %>
 <% } else { %>

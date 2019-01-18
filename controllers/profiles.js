@@ -23,9 +23,14 @@ router.get('/', loggedIn, (req, res)=>{
 
 // friend profiles
 router.post('/friends/:name', loggedIn, (req, res)=>{
-    db.user.findById(req.body.friendUserId)
+    db.user.findOne({
+        where: {
+            id: req.body.friendUserId
+        },
+        include: [db.restaurant]
+    })
     .then((userProfile)=>{
-        res.render('user/friends-profile', { userProfile: userProfile })
+        res.render('user/friends-profile', { userProfile: userProfile, friendsRestaurants: userProfile.restaurants })
     })
     .catch((error)=>{
         console.log('ERROR finding friends profile', error)

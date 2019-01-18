@@ -29,14 +29,7 @@ module.exports = (sequelize, DataTypes) => {
     facebookId: DataTypes.STRING,
     facebookToken: DataTypes.STRING,
     admin: DataTypes.BOOLEAN,
-    profileImg: {
-      type: DataTypes.TEXT,
-      validate: {
-        isUrl: {
-          msg: 'Aww, no pic? :('
-        }
-      }
-    }
+    profileImg: DataTypes.TEXT
   }, {
     hooks: {
       beforeCreate: function(pendingUser){

@@ -40,7 +40,6 @@ passport.use(new localStrategy({
             // else good
             callback(null, foundUser);
         }
-        
     })
     .catch((error)=>{
         callback(error, null)
@@ -59,10 +58,10 @@ passport.use(new FacebookStrategy({
 
     // see if the email exists in the users table
     db.user.findOne({
-        where: { email: facebookEmail }
+        where: { email: facebookEmail.toLowerCase() }
     })
     .then(function(existingUser){
-        if(existingUser && facebookEmail){
+        if(existingUser && facebookEmail.toLowerCase()){
             // This is a returning user - just need to update facebookId and Token
             existingUser.updateAttributes({
                 facebookId: profile.id,
@@ -81,10 +80,10 @@ passport.use(new FacebookStrategy({
                 where: { facebookId: profile.id },
                 defaults: {
                     facebookToken: accessToken,
-                    email: facebookEmail,
+                    email: facebookEmail.toLowerCase(),
                     username: usernameArry[0] + usernameArry[1],
-                    first_name: usernameArry[0],
-                    last_name: usernameArry[usernameArry.length - 1],
+                    first_name: usernameArry[0].toLowerCase(),
+                    last_name: usernameArry[usernameArry.length - 1].toLowerCase(),
                     admin: false,
                     dob: profile.birthday,
                     profileImg: photo
@@ -99,7 +98,7 @@ passport.use(new FacebookStrategy({
                     // newUser was not new after all. This might happen if they changed their email on file with Facebook since they logged in last.
                     // NOTE: save() is an alternative way of doing updateAttributes()
                     newUser.facebookToken = accessToken;
-                    newUser.email = facebookEmail;
+                    newUser.email = facebookEmail.toLowerCase();
                     newUser.save()
                     .then(function(savedUser){
                         callback(null, savedUser);

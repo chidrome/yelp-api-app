@@ -12,6 +12,7 @@ router.get('/',(req, res)=>{
     res.render('restaurants/search');
 })
 
+// search for the restaurant
 router.post('/search', (req, res)=>{
     client.search({
         term: req.body.restaurantName,

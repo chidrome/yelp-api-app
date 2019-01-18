@@ -37,6 +37,9 @@ app.use(passport.session());
 app.use((req, res, next) => {
 	res.locals.alerts = req.flash();
 	res.locals.user = req.user;
+	res.locals.firstCapitalization = function(firstName){
+		return firstName.charAt(0).toUpperCase() + firstName.slice(1)
+	}
 	next();
 })
 

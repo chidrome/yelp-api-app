@@ -27,7 +27,7 @@ router.post('/signup', (req, res, next) => {
 		console.log(req.body)
 		db.user.find({
 			where: { 
-					username: req.body.username
+					username: req.body.username.toLowerCase()
 			 }
 		})
 		.then((foundUserWithUsername)=>{
@@ -39,7 +39,7 @@ router.post('/signup', (req, res, next) => {
 			else {
 				db.user.find({
 					where: {
-						email: req.body.email
+						email: req.body.email.toLowerCase()
 					}
 				})
 				.then((foundUserWithEmail)=>{
@@ -50,15 +50,15 @@ router.post('/signup', (req, res, next) => {
 					}
 					else {
 						db.user.create({
-							first_name: req.body.first_name,
-							last_name: req.body.last_name,
-							username: req.body.username,
+							first_name: req.body.first_name.toLowerCase(),
+							last_name: req.body.last_name.toLowerCase(),
+							username: req.body.username.toLowerCase(),
 							password: req.body.password,
-							email: req.body.email,
+							email: req.body.email.toLowerCase(),
 							profileImg: req.body.profileImg,
 							dob: req.body.dob,
 							bio: req.body.bio,
-							favorite_cuisine: req.body.favorite_cuisine
+							favorite_cuisine: req.body.favorite_cuisine.toLowerCase()
 						})
 						.then((wasCreated)=>{
 							console.log('This User Was Created', wasCreated);
