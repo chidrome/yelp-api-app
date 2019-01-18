@@ -1,4 +1,5 @@
 <div class="row">
+
 <h3>My Favorites</h3>
     <div class="col s4">
         <% results.restaurants.forEach((r)=>{ %>
@@ -15,4 +16,15 @@
     <div class="col s8">
         <% include ../map.ejs %>
     </div>
+</div>
+
+<div class="row">
+    <form action="#" method="POST">
+        <select name="city">
+        <% results.restaurants.forEach((r) => { %>
+            <option value="<%= r.city %>"><%= r.city %></option>
+        <% }) %>
+        </select>
+        <input type="submit" value="Submit">
+    </form>   -->
 </div>

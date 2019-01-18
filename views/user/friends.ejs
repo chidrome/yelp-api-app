@@ -1,5 +1,22 @@
+<h3>Search for your friend by e-mail</h3>
+    <form method="POST" action="/friends/search">
+        <div class="row">
+            <div class="input-field col s3">
+                <input type="text" name="friendEmail" placeholder="Email" required>
+            </div>
+        </div>
+        <input type="submit" value="Search">
+    </form>
+
+<h3>Found Friends:</h3>
+<p><%= foundFriend.first_name %> <%= foundFriend.last_name %></p>
+
 <h3>My friends will go here</h3>
 
-<% results.forEach((u) => { %>
-    <li><%= u.first_name %> <%= u.last_name %> </li>
-<% }) %>
+<% if(friends && friends.length > 0){ %>
+    <% friends.forEach(friend => { %>
+        <li><%= friend.first_name %></li>
+    <% }) %>
+<% } else { %>
+    No friends :(
+<% } %>

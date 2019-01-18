@@ -22,7 +22,9 @@
                         <input type="hidden" name="long" value="<%= b.coordinates.longitude %>">
                         <input type="hidden" name="yelpRating" value="<%= b.rating %>">
                         <input type="hidden" name="imageURL" value="<%= b.image_url %>">
-                        <input type="hidden" name="userId" value="<%= user.id %>">
+                        <% if (user) { %>
+                            <input type="hidden" name="userId" value="<%= user.id %>">
+                        <% } %>
                         <button class="btn-floating halfway-fab waves-effect waves-light red" type="submit">
                                 <i class="material-icons">add</i>
                         </button>

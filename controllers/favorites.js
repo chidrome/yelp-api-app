@@ -21,6 +21,7 @@ router.get('/', loggedIn, (req, res)=>{
         include: [db.restaurant]
     })
     .then((foundUser)=>{
+        console.log(foundUser)
         var markers = foundUser.restaurants.map((r)=>{
 			var markerObj = {
 				"type": "Feature",
