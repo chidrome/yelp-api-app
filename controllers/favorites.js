@@ -5,7 +5,7 @@ var db = require('../models')
 // import geocoding services from mapbox sdk
 const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
 // create a geocoding client
-const geocodingClient = mbxGeocoding({ accessToken: 'pk.eyJ1IjoiY2hpZHJvbWUiLCJhIjoiY2pxbWt4N3YxMHc3dTQ4bHI4YTZuMHJwNSJ9.C2FzPaz5TVcpwLzvYQAYIg' })
+const geocodingClient = mbxGeocoding({ accessToken: process.env.GEOCODING_CLIENT_ID })
 
 
 // include my middleware folder
