@@ -25,35 +25,60 @@ router.post('/signup', (req, res, next) => {
 	}
 	else {
 		console.log(req.body)
-		db.user.findOrCreate({
+		db.user.find({
 			where: { 
-				$or: [{ 
-					email: req.body.email 
-				}, {
 					username: req.body.username
-				 }]
-			 },
-			defaults: req.body
+			 }
 		})
-		.spread((userObject, wasCreated)=>{
-			console.log('Got to Promise');
-			if(wasCreated){
-				console.log('Was Created');
-				req.flash('success', 'Yay! Good Job! You signed up!');
-				passport.authenticate('local', {
-					successRedirect: '/profile',
-					successFlash: 'Login successful!',
-					failureRedirect: '/auth/login',
-					failureFlash: 'Invalid Credentials'
-				})(req, res, next);
+		.then((foundUserWithUsername)=>{
+			if(foundUserWithUsername){
+				console.log('Username was Found')
+				req.flash('error', 'Username Already Exists');
+				res.render('auth/signup', { previousData: req.body, alerts: req.flash() });
 			}
 			else {
-				console.log('Was Found')
-				req.flash('error', 'Username/Email already exists');
-				res.render('auth/signup', { previousData: req.body, alerts: req.flash() });
+				db.user.find({
+					where: {
+						email: req.body.email
+					}
+				})
+				.then((foundUserWithEmail)=>{
+					if(foundUserWithEmail){
+						console.log('Email was Found')
+						req.flash('error', 'Email Already Exists');
+						res.render('auth/signup', { previousData: req.body, alerts: req.flash() })
+					}
+					else {
+						db.user.create({
+							first_name: req.body.first_name,
+							last_name: req.body.last_name,
+							username: req.body.username,
+							password: req.body.password,
+							email: req.body.email,
+							profileImg: req.body.profileImg,
+							dob: req.body.dob,
+							bio: req.body.bio,
+							favorite_cuisine: req.body.favorite_cuisine
+						})
+						.then((wasCreated)=>{
+							console.log('This User Was Created', wasCreated);
+							req.flash('success', 'Yay! Good Job! You signed up!');
+							passport.authenticate('local', {
+							successRedirect: '/profile',
+							successFlash: 'Login successful!',
+							failureRedirect: '/auth/login',
+							failureFlash: 'Invalid Credentials'
+							})(req, res, next);
+						})
+						.catch((error)=>{
+							console.log('Something went wrong with trying to create the user.', error)
+						})
+					}
+				})
 			}
 		})
 		.catch((error)=>{
+			console.log('Something went wrong with searching for an existing user', error)
 			if(error && error.errors){
 				error.errors.forEach((e)=>{
 					if(e.type == 'Validation error'){
