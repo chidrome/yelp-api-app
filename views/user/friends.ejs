@@ -14,8 +14,11 @@
 <h3>My friends will go here</h3>
 
 <% if(friends && friends.length > 0){ %>
-    <% friends.forEach(friend => { %>
-        <li><%= friend.first_name %></li>
+    <% friends.forEach((friend) => { %>
+        <form action="/profile/friends/<%= friend.first_name %><%= friend.last_name %>" method="POST">
+            <input type="hidden" name="friendUserId" value="<%= friend.id %>">
+            <input class="profileButton" type="submit" value="<%= friend.first_name %> <%= friend.last_name %>">
+        </form>
     <% }) %>
 <% } else { %>
     No friends :(

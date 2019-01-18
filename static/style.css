@@ -80,4 +80,18 @@ form {
 	width: auto !important;
 }
 
+.profileImg {
+	max-width: 200px;
+}
 
+.profileButton {
+	background: none;
+	border: none;
+	padding: 0;
+	color: blue;
+}
+
+.profileButton:hover {
+	color: red;
+	cursor: pointer;
+}

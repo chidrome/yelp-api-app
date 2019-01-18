@@ -14,7 +14,6 @@ router.get('/', loggedIn, (req, res)=>{
         include: [db.restaurant]
     })
     .then((foundUser)=>{
-        console.log(foundUser.restaurants);
         res.render('user/profile', {restaurants: foundUser.restaurants})
     })
     .catch((error)=>{
@@ -22,12 +21,19 @@ router.get('/', loggedIn, (req, res)=>{
     })
 });
 
+// friend profiles
+router.post('/friends/:name', loggedIn, (req, res)=>{
+    db.user.findById(req.body.friendUserId)
+    .then((userProfile)=>{
+        res.render('user/friends-profile', { userProfile: userProfile })
+    })
+    .catch((error)=>{
+        console.log('ERROR finding friends profile', error)
+    })
+})
+
 
 router.get('/admins', isAdmin, (req, res)=>{
     res.render('admin');
 })
-
-
-
-
 module.exports = router;
