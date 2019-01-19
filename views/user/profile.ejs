@@ -2,18 +2,26 @@
 <h2><%= firstCapitalization(user.first_name) %>  <%= firstCapitalization(user.last_name) %></h2>
 
 <div class="row">
-    <div class="col s4 profilePic">
-        <img class="profileImg" src="<%= user.profileImg %>">
+    <div class="col s8">
+        <div class="row z-depth-5">
+            <div class="col s4 profilePic">
+                <img class="profileImg" src="<%= user.profileImg %>">
+            </div>
+            <div class="col s2">
+                <p><strong>Username: </strong><%= user.username %></p>
+                <p><strong>Admin Status: </strong><%= user.admin ? 'Admin' : 'User' %></p>
+            </div>
+            <div class="col s4">
+                <h5><%= firstCapitalization(user.first_name) %>'s Bio:</h5>
+                <p><%= user.bio %></p>
+            </div>
+        </div>
     </div>
-    <div class="col s2">
-        <p><strong>Username: </strong><%= user.username %></p>
-        <p><strong>Admin Status: </strong><%= user.admin ? 'Admin' : 'User' %></p>
-    </div>
-    <div class="col s4">
-        <h5><%= firstCapitalization(user.first_name) %>'s Bio:</h5>
-        <p><%= user.bio %></p>
+    <div class="col s3 z-depth-5 friends-box">
+        <p>Friends</p>
     </div>
 </div>
+
 <div class="row">
     <h3>My Favorite Restaurants</h3>
     <% restaurants.forEach((r)=>{ %>
@@ -29,7 +37,7 @@
                         <p>Friends Rating: *insert friend ratings here*</p>
                     </div>
                     <div class="card-action">
-                        <a href="#">More Info</a>
+                        <a href="/restaurants/moreinfo">More Info</a>
                     </div>
                 </div>
             </div>

@@ -21,7 +21,6 @@ router.get('/', loggedIn, (req, res)=>{
         include: [db.restaurant]
     })
     .then((foundUser)=>{
-        console.log(foundUser)
         var markers = foundUser.restaurants.map((r)=>{
 			var markerObj = {
 				"type": "Feature",
@@ -30,11 +29,12 @@ router.get('/', loggedIn, (req, res)=>{
 					"coordinates": [r.long, r.lat]
 				},
 				"properties": {
-					"title": r.city,
+					"title": r.name,
 					"icon": "restaurant"
 				}
-			}
-			return JSON.stringify(markerObj);
+            }
+            console.log(markerObj)
+            return JSON.stringify(markerObj);
         })
         res.render('restaurants/favorites', { results: foundUser, markers: markers, center: [-100, 39.5], zoom: 3.39, pitch: 0, bearing: 0 })
     })

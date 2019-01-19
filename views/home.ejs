@@ -1,7 +1,19 @@
 <div id="map-container">
-    <div id="home-content">  
-        <h1>Home Page</h1>
-    </div>
     <% include homepage-map.ejs %>
 </div>
+
+    <div class="search-container">
+        <h5>Where's your next adventure</h5>
+        <form method="POST" action="/search">
+            <div class="row">
+                <div class="input-field col s9">
+                    <input type="text" name="restaurantName" placeholder="Restaurant, Cuisine">
+                </div>
+                <div class="input-field col s3">
+                    <input  type="text" name="cityState" placeholder="City, State">  
+                </div>
+                <input type="submit" value="Search">
+            </div>
+        </form>
+    </div>
 

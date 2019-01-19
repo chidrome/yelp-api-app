@@ -30,4 +30,16 @@ map.on('load', function () {
         }
     });
 });
+
+// fly to restaurant function
+function flyToRestaurant(lat, long) {
+  map.flyTo({
+    center: [long, lat],
+    zoom: 15,
+    pitch: 75,
+    bearing: 0
+  });
+}
+
+
 </script>

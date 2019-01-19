@@ -9,6 +9,7 @@ var parser = require('body-parser');
 var passport = require('./config/passportConfig');
 var session = require('express-session');
 var yelp = require('yelp-fusion');
+var client = yelp.client(process.env.YELP_API_KEY)
 
 // Declare express app
 var app = express();
@@ -44,9 +45,24 @@ app.use((req, res, next) => {
 })
 
 // Declare your routes
-app.get('/', function(req, res){
+app.get('/', (req, res)=>{
 	res.render('home', { markers: 'restaurant'})
 });
+
+app.post('/search', (req, res)=>{
+	client.search({
+        term: req.body.restaurantName,
+        location: req.body.cityState
+    })
+    .then((data)=>{
+        var results = JSON.parse(data.body)
+        var businesses = results.businesses //JSON.parse(data.body.businesses)
+        res.render('home', { results: results, business: businesses });
+    })
+    .catch((error)=>{
+        console.log('ERROR!', error);
+    })
+})
 
 
 // Include any controllers we need

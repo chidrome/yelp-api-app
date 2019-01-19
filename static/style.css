@@ -32,10 +32,11 @@ form {
 }
 
 #map {
-    position: relative;
+    position: fixed;
     width: 100%;
-    margin: 20px auto;
-    height: 500px;
+    /* margin: 20px auto; */
+	height: 100%;
+	margin-left: -7.5%;
 }
 
 #homepage-map {
@@ -50,10 +51,11 @@ form {
 
 #map-container {
 	position: fixed;
+	margin-left: -7.5%;
 }
 
 .mapboxgl-ctrl-bottom-left, .mapboxgl-ctrl-bottom-right {
-    position: fixed;
+	position: fixed;
 }
 
 .card-picture {
@@ -66,8 +68,12 @@ form {
 }
 
 .container {
-	margin: auto !important;
 	width: 85% !important;
+}
+
+.search-container {
+	position: absolute;
+	left: 2%;
 }
 
 .title-results {
@@ -92,6 +98,7 @@ form {
 
 .profilePic {
 	width: auto !important;
+	padding: .40rem .75rem 0 .75rem !important;
 }
 
 .profileImg {
@@ -108,4 +115,23 @@ form {
 .profileButton:hover {
 	color: red;
 	cursor: pointer;
+}
+
+.row {
+	padding: 5px !important;
+}
+
+.friends-box {
+	position: absolute;
+	right: 10% !important;
+}
+
+.restaurant-list {
+	margin: 0 0 5px 0 !important;
+	padding: 0 !important;
+}
+
+.restaurant-container {
+	position: absolute;
+	left: 2%;
 }
