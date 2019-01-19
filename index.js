@@ -45,7 +45,7 @@ app.use((req, res, next) => {
 
 // Declare your routes
 app.get('/', function(req, res){
-	res.render('home');
+	res.render('home', { markers: 'restaurant'})
 });
 
 
