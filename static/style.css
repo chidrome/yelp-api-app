@@ -1,5 +1,4 @@
 nav {
-	background-color: rgb(60, 34, 175) !important;
 	min-height: 50px;
 	padding: 10px 0 0 10px;
 	box-shadow: none !important;
@@ -134,4 +133,9 @@ form {
 .restaurant-container {
 	position: absolute;
 	left: 2%;
+}
+
+.fixed-action-btn {
+	left: 2% !important;
+	bottom: 5% !important;
 }

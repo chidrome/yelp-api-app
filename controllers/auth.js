@@ -97,7 +97,6 @@ router.post('/signup', (req, res, next) => {
 
 router.get('/logout', (req, res)=>{
 	req.logout(); // logs me out of the session
-	req.flash('success', 'Successful Logout! Come back again!');
 	res.redirect('/');
 });
 

@@ -6,6 +6,8 @@ var db = require('../models');
 var loggedIn = require('../middleware/loggedIn');
 var isAdmin = require('../middleware/isAdmin');
 
+
+// find the users info then find his friends
 router.get('/', loggedIn, (req, res)=>{
     db.user.findOne({
         where: {
@@ -14,12 +16,26 @@ router.get('/', loggedIn, (req, res)=>{
         include: [db.restaurant]
     })
     .then((foundUser)=>{
-        res.render('user/profile', {restaurants: foundUser.restaurants})
+        db.user.findOne({
+            where: {
+                id: req.user.id
+            },
+            include: [{model: db.user, as: 'friend'}]
+        })
+        .then((user)=>{
+            var foundFriend = ''
+            res.render('user/profile', {restaurants: foundUser.restaurants, friends: user.friend, foundFriend: foundFriend})
+        })
+        .catch((error)=>{
+            console.log('ERROR finding users!', error)
+        })
+        
     })
     .catch((error)=>{
         console.log('ERROR finding user!', error)
     })
 });
+
 
 // friend profiles
 router.post('/friends/:name', loggedIn, (req, res)=>{

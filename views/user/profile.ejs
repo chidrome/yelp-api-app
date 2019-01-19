@@ -19,6 +19,16 @@
     </div>
     <div class="col s3 z-depth-5 friends-box">
         <p>Friends</p>
+        <% if(friends && friends.length > 0){ %>
+            <% friends.forEach((friend) => { %>
+                <form action="/profile/friends/<%= firstCapitalization(friend.first_name) %><%= firstCapitalization(friend.last_name) %>" method="POST">
+                    <input type="hidden" name="friendUserId" value="<%= friend.id %>">
+                    <input class="profileButton" type="submit" value="<%= firstCapitalization(friend.first_name) %> <%= firstCapitalization(friend.last_name) %>">
+                </form>
+            <% }) %>
+        <% } else { %>
+            No friends :(
+        <% } %>
     </div>
 </div>
 
