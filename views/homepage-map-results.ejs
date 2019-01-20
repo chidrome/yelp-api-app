@@ -1,13 +1,13 @@
-<div class="z-depth-5" id='map'></div>
+<div id='homepage-map'></div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiY2hpZHJvbWUiLCJhIjoiY2pxbWt4N3YxMHc3dTQ4bHI4YTZuMHJwNSJ9.C2FzPaz5TVcpwLzvYQAYIg';
 var map = new mapboxgl.Map({
-    container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v9',
-    center: [<%- center %>],
-    zoom: <%- zoom %>,
-    pitch: <%- pitch %>,
-    bearing: <%- bearing %>
+    container: 'homepage-map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [<%- cityCenter.center %> ],
+    zoom: 12,
+    pitch: 0,
+    bearing: 0
 });
 
 map.on('load', function () {
@@ -60,11 +60,10 @@ map.on('load', function () {
 function flyToRestaurant(lat, long) {
   map.flyTo({
     center: [long, lat],
-    zoom: 15,
+    zoom: 16,
     pitch: 75,
     bearing: 0
   });
 }
-
 
 </script>

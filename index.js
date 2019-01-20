@@ -17,6 +17,11 @@ var app = express();
 // Declare a reference to the models folder
 var db = require('./models');
 
+// import geocoding services from mapbox sdk
+const mbxGeocoding = require('@mapbox/mapbox-sdk/services/geocoding');
+// create a geocoding client
+const geocodingClient = mbxGeocoding({ accessToken: process.env.GEOCODING_CLIENT_ID })
+
 // set views to EJS
 app.set('view engine', 'ejs');
 
@@ -50,18 +55,49 @@ app.get('/', (req, res)=>{
 });
 
 app.post('/search', (req, res)=>{
-	client.search({
-        term: req.body.restaurantName,
-        location: req.body.cityState
-    })
-    .then((data)=>{
-        var results = JSON.parse(data.body)
-        var businesses = results.businesses //JSON.parse(data.body.businesses)
-        res.render('home', { results: results, business: businesses });
-    })
-    .catch((error)=>{
-        console.log('ERROR!', error);
-    })
+	// use the geocoding client to convert the city/location into coordinates
+	geocodingClient
+	.forwardGeocode({
+		query: req.body.cityState,
+		types: ['place'],
+		countries: ['us']
+	})
+	.send()
+	.then((geoCodeObject)=>{
+		var cityCenter = geoCodeObject.body.features[0]
+		client.search({
+			term: req.body.restaurantName,
+			location: req.body.cityState
+		})
+		.then((data)=>{
+			var results = JSON.parse(data.body)
+			var businesses = results.businesses //JSON.parse(data.body.businesses) // an array of businessess
+			var markers = businesses.map((r)=>{
+				var markerObj = {
+					"type": "Feature",
+					"geometry": {
+						"type": "Point",
+						"coordinates": [r.coordinates.longitude, r.coordinates.latitude]
+					},
+					"properties": {
+						"title": r.name,
+						"description": "<img class='popupPic center' src="+r.image_url+"><br><strong>" + r.name + "</strong><br>" + r.display_phone + "<br>" + r.location.display_address,
+						"icon": "restaurant"
+					}
+				}
+				return JSON.stringify(markerObj);
+			})
+			res.render('home-results', { results: results, business: businesses, markers: markers, cityCenter: cityCenter });
+		})
+		.catch((error)=>{
+			console.log('ERROR!', error);
+			res.render('error');
+		})
+	})
+	.catch((error)=>{
+		console.log('ERROR getting geocode', error)
+		res.render('error');
+	})
 })
 
 

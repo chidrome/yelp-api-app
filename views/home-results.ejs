@@ -1,5 +1,5 @@
 <div id="map-container">
-    <% include homepage-map.ejs %>
+    <% include homepage-map-results.ejs %>
 </div>
 
     <div class="search-container z-depth-5">
@@ -10,10 +10,15 @@
                     <input type="text" name="restaurantName" placeholder="Restaurant, Cuisine">
                 </div>
                 <div class="input-field col s4">
-                    <input  type="text" name="cityState" placeholder="City, State" required>  
+                    <input  type="text" name="cityState" placeholder="City, State">  
                 </div>
                 <input type="submit" value="Search">
             </div>
         </form>
-    </div>
 
+    <% business.forEach(r => { %>
+        <div class="row homepage-results">
+            <input class="btn-restaurant-list" type="submit" value="<%= r.name %>" onclick="flyToRestaurant(<%= r.coordinates.latitude %>, <%= r.coordinates.longitude %>)">
+        </div>
+    <% }) %>
+    </div>

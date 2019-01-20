@@ -13,17 +13,16 @@
 </head>
 <body>
 <div class="fixed-action-btn">
-  <a class="btn-floating btn-large blue">
+  <a class="btn-floating z-depth-0 btn-large blue">
     <i class="large material-icons">menu</i>
   </a>
   <ul>
-  	<li><a class="btn-floating blue" href="/restaurants"><i class="material-icons">search</i></a></li>
-    <li><a class="btn-floating blue" href="/"><i class="material-icons">home</i></a></li>
+  	<li><a class="btn-floating z-depth-0 blue" href="/restaurants"><i class="material-icons">search</i></a></li>
+    <li><a class="btn-floating z-depth-0 blue" href="/"><i class="material-icons">home</i></a></li>
   </ul>
 </div>
 	<nav class="blue">
 		<div class="nav-wrapper navbar-transition cool-navbar">
-
 				<% if(!user) { %>
 					<a href="/auth/signup" class="right">Sign Up</a>
 					<a href="/auth/login" class="right">Login</a>

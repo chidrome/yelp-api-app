@@ -12,7 +12,7 @@ const geocodingClient = mbxGeocoding({ accessToken: process.env.GEOCODING_CLIENT
 var loggedIn = require('../middleware/loggedIn');
 var isAdmin = require('../middleware/isAdmin');
 
-// get the favorites and map it
+// get the favorites, map it and allow for zoom 
 router.get('/', loggedIn, (req, res)=>{
     db.user.findOne({
         where: {
@@ -29,7 +29,8 @@ router.get('/', loggedIn, (req, res)=>{
 					"coordinates": [r.long, r.lat]
 				},
 				"properties": {
-					"title": r.name,
+                    "title": r.name,
+                    "description": "<img class='popupPic center' src="+r.image_url+"><br><strong>" + r.name + "</strong><br>" + r.phone + "<br>" + r.address1 + "<br>" + r.address2 + "<br>" + r.address3 + "<br>" + r.city + ", " + r.state,
 					"icon": "restaurant"
 				}
             }
@@ -42,38 +43,6 @@ router.get('/', loggedIn, (req, res)=>{
         console.log('ERROR Finding Favorites!!', error)
     })
 })
-
-// zoom in on the map based off the restaurant thats clicked in the favorites
-router.post('/restaurant/zoom', loggedIn, (req, res)=>{
-    db.user.findOne({
-        where: {
-            id: req.user.id
-        },
-        include: [db.restaurant]
-    })
-    .then((foundUser)=>{
-        var markers = foundUser.restaurants.map((r)=>{
-			var markerObj = {
-				"type": "Feature",
-				"geometry": {
-					"type": "Point",
-					"coordinates": [r.long, r.lat]
-				},
-				"properties": {
-					"title": r.city,
-					"icon": "restaurant"
-				}
-			}
-			return JSON.stringify(markerObj);
-        })
-        res.render('restaurants/favorites', { results: foundUser, markers: markers, center: [req.body.long, req.body.lat], zoom: 15.5, pitch: 45, bearing: 17.6 })
-    })
-    .catch((error)=>{
-        console.log('ERROR Finding Favorites!!', error)
-    })
-})
-
-
 
 // add the favorite restaurants to the db
 router.post('/add', loggedIn, (req, res)=>{

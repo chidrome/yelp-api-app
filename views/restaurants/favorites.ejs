@@ -8,7 +8,7 @@
         <div class="col s4">
             <% results.restaurants.forEach((r)=>{ %>
                 <div class="row restaurant-list">
-                    <input type="submit" value="<%= r.name %>" onclick="flyToRestaurant(<%= r.lat %>, <%= r.long %>)">
+                    <input class="btn-restaurant-list" type="submit" value="<%= r.name %>" onclick="flyToRestaurant(<%= r.lat %>, <%= r.long %>)">
                 </div>
             <% }) %>
         </div>

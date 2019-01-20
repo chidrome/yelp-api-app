@@ -71,8 +71,14 @@ form {
 }
 
 .search-container {
-	position: absolute;
+	margin-top: 1rem;
+	max-height: 39rem;
+	position: fixed;
+	overflow: scroll !important;
+	max-width: 28rem;
 	left: 2%;
+	padding: 1rem;
+	background-image: linear-gradient(to right, rgba(83, 81, 81, 0.4), rgba(212, 212, 212, 0));
 }
 
 .title-results {
@@ -125,9 +131,21 @@ form {
 	right: 10% !important;
 }
 
-.restaurant-list {
+.restaurant-list, .homepage-results {
 	margin: 0 0 5px 0 !important;
 	padding: 0 !important;
+}
+
+.btn-restaurant-list {
+	background: none;
+	border: none;
+	padding: 0;
+	color: blue;
+}
+
+.btn-restaurant-list:hover {
+	color: red;
+	cursor: pointer;
 }
 
 .restaurant-container {
@@ -136,6 +154,17 @@ form {
 }
 
 .fixed-action-btn {
-	left: 2% !important;
-	bottom: 5% !important;
+	top: .5% !important;
+	left: 1% !important;
+	height: 56px !important;
+	width: 150px !important;
+}
+
+input::placeholder {
+	color: rgb(124, 124, 121);
+}
+
+.popupPic {
+	max-width: 18rem;
+	height: auto;
 }
