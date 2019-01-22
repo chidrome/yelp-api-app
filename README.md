@@ -18,25 +18,25 @@ This was app was created from the need to get restaurant recommendations not jus
 `npm -install @mapbox/mapbox-sdk`
 
 ## Routes
-`GET /` - main home page
-`POST /search` - search for restaurants from the main homepage
-`GET /auth/signup` - sign up
-`GET /auth/login` - login with your registered account info. You can also login with Facebook credentials.
-`POST /favorites/add` - add your favorite restaurants.
-`GET /favorites` - show your favorite restaurants.
-`DELETE /favorites/remove` - remove the association with your favorite restaurant.
-`GET /restaurants` - restaurants search page.
-`POST /restaurants/search` - makes a call to Yelp API to search for restaurants with the given params
-`GET /restaurants/moreinfo` - get more info on the restaurant.
-`POST /restaurants/comment/add` - add a comment for a specific restaurant.
-`GET /profile` - populates user profile.
-`POST /profile/friends/:name` - populates a friends profile.
-`GET /profile/edit` - show edit user profile page.
-`PUT /profile/edit` - edit user's profile.
-`GET /friends` - show user's friends.
-`POST /friends/add` - add friend to user.
-`DELETE /friends/remove` - remove association with friend.
-`POST /friends/search` - search for friends.
+* `GET /` - main home page
+* `POST /search` - search for restaurants from the main homepage
+* `GET /auth/signup` - sign up
+* `GET /auth/login` - login with your registered account info. You can also login with Facebook credentials.
+* `POST /favorites/add` - add your favorite restaurants.
+* `GET /favorites` - show your favorite restaurants.
+* `DELETE /favorites/remove` - remove the association with your favorite restaurant.
+* `GET /restaurants` - restaurants search page.
+* `POST /restaurants/search` - makes a call to Yelp API to search for restaurants with the given params
+* `GET /restaurants/moreinfo` - get more info on the restaurant.
+* `POST /restaurants/comment/add` - add a comment for a specific restaurant.
+* `GET /profile` - populates user profile.
+* `POST /profile/friends/:name` - populates a friends profile.
+* `GET /profile/edit` - show edit user profile page.
+* `PUT /profile/edit` - edit user's profile.
+* `GET /friends` - show user's friends.
+* `POST /friends/add` - add friend to user.
+* `DELETE /friends/remove` - remove association with friend.
+* `POST /friends/search` - search for friends.
 
 ## Challenging hurdles
 1. The biggest takeaway for me was getting a handle(somewhat) on associations with sequelize models, specifically N:M relations. While a user may have have many comments on a given restaurant, that restaurant can also have many comments from many users. Thinking about how to associate that using object oriented relational mapping is still quite a head spinner for me.
