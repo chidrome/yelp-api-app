@@ -71,7 +71,8 @@ router.get('/edit', loggedIn, (req, res)=>{
 // post to edit my profile
 router.post('/edit', loggedIn, (req, res)=>{
     db.user.update({
-        bio: req.body.updateBio
+        bio: req.body.updateBio,
+        profileImg: req.body.updateProfilImgUrl
     }, {
         where: {
             id: req.user.id

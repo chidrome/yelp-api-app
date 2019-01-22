@@ -11,7 +11,9 @@
                     <form action="/profile/edit" method="POST">
                         <label>Edit your bio</label>
                         <input type="text" placeholder="<%= user.bio %>" name="updateBio">
-                        <input type="submit" value="Edit">
+                        <label>Update your profile picture URL</label>
+                        <input type="text" placeholder="<%= user.profileImg %>" name="updateProfilImgUrl">
+                        <input type="submit" value="Update">
                     </form>
                 </div>
             </div>
