@@ -14,11 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     friend_rating: DataTypes.STRING,
     image_url: DataTypes.STRING,
     lat: DataTypes.NUMERIC,
-    long: DataTypes.NUMERIC
+    long: DataTypes.NUMERIC,
+    yelp_business_id: DataTypes.STRING
   }, {});
   restaurant.associate = function(models) {
     // associations can be defined here
     models.restaurant.belongsToMany(models.user, { through: 'restaurantUser' })
+
   };
   return restaurant;
 };

@@ -38,7 +38,37 @@ router.post('/add', loggedIn, (req, res)=>{
             db.user.findById(friend.id)
             .then((user)=>{
                 user.addFriend(req.user)
-                res.redirect('/friends')
+                res.redirect('/profile')
+            })
+            .catch((error)=>{
+                console.log('ERROR associating friend back', error)
+            })
+            
+        })
+        .catch((error)=>{
+            console.log('ERROR adding friend', error)
+        })
+    })
+    .catch((error)=>{
+        console.log('ERROR adding/finding friend', error)
+    })
+})
+
+// remove friends
+router.post('/remove', loggedIn, (req, res)=>{
+    db.user.findOne({
+        where: {
+            id: req.body.friendId
+        }
+    })
+    .then((friend)=>{
+        db.user.findById(req.user.id)
+        .then((user)=>{
+            user.removeFriend(friend)
+            db.user.findById(friend.id)
+            .then((user)=>{
+                user.removeFriend(req.user)
+                res.redirect('/profile')
             })
             .catch((error)=>{
                 console.log('ERROR associating friend back', error)

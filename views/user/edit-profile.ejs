@@ -1,0 +1,20 @@
+<h2><%= firstCapitalization(user.first_name) %>  <%= firstCapitalization(user.last_name) %></h2>
+
+<div class="row">
+    <div class="col s8">
+        <div class="row z-depth-5">
+            <div class="col s4 profilePic">
+                <img class="profileImg" src="<%= user.profileImg %>">
+            </div>
+            <div clas="row">
+                <div class="col s12">
+                    <form action="/profile/edit" method="POST">
+                        <label>Edit your bio</label>
+                        <input type="text" placeholder="<%= user.bio %>" name="updateBio">
+                        <input type="submit" value="Edit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

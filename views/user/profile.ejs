@@ -11,14 +11,15 @@
                 <p><strong>Username: </strong><%= user.username %></p>
                 <p><strong>Admin Status: </strong><%= user.admin ? 'Admin' : 'User' %></p>
             </div>
-            <div class="col s4">
+            <div class="col s6">
+                <small><p class="right"><a href="/profile/edit">Edit Profile</a></p></small>
                 <h5><%= firstCapitalization(user.first_name) %>'s Bio:</h5>
                 <p><%= user.bio %></p>
             </div>
         </div>
     </div>
     <div class="col s3 z-depth-5 friends-box">
-        <p>Friends</p>
+        <p class="friends-profile-label">Friends</p>
         <% if(friends && friends.length > 0){ %>
             <% friends.forEach((friend) => { %>
                 <form action="/profile/friends/<%= firstCapitalization(friend.first_name) %><%= firstCapitalization(friend.last_name) %>" method="POST">
@@ -37,7 +38,7 @@
     <% restaurants.forEach((r)=>{ %>
         <div class="col s4">
             <h6 class="header"><%= r.name %></h6>
-            <div class="card horizontal">
+            <div class="card horizontal z-depth-5">
                 <div class="card-image">
                     <img src="<%= r.image_url %>">
                 </div>
@@ -47,7 +48,10 @@
                         <p>Friends Rating: *insert friend ratings here*</p>
                     </div>
                     <div class="card-action">
-                        <a href="/restaurants/moreinfo">More Info</a>
+                        <form action="/restaurants/moreinfo" method="POST">
+                            <input type="hidden" name="restaurantId" value="<%= r.id %>">
+                            <input type="submit" value="More Info">
+                        </form>
                     </div>
                 </div>
             </div>

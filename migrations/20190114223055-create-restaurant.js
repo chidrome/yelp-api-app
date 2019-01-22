@@ -50,6 +50,9 @@ module.exports = {
       image_url: {
         type: Sequelize.STRING
       },
+      yelp_business_id: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -81,7 +81,7 @@ app.post('/search', (req, res)=>{
 					},
 					"properties": {
 						"title": r.name,
-						"description": "<img class='popupPic center' src="+r.image_url+"><br><strong>" + r.name + "</strong><br>" + r.display_phone + "<br>" + r.location.display_address,
+						"description": "<img class='popupPic center' src="+r.image_url+"><br><strong>" + r.name + "</strong><br>" + r.display_phone + "<br>" + r.location.display_address + "<br><a href='/restaurants/moreinfo' restaurantId='" + r.name + "'>More Info</a>",
 						"icon": "restaurant"
 					}
 				}

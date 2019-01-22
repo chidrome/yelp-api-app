@@ -34,7 +34,6 @@ router.get('/', loggedIn, (req, res)=>{
 					"icon": "restaurant"
 				}
             }
-            console.log(markerObj)
             return JSON.stringify(markerObj);
         })
         res.render('restaurants/favorites', { results: foundUser, markers: markers, center: [-100, 39.5], zoom: 3.39, pitch: 0, bearing: 0 })
@@ -62,7 +61,8 @@ router.post('/add', loggedIn, (req, res)=>{
             yelp_rating: req.body.yelpRating,
             lat: req.body.lat,
             long: req.body.long,
-            image_url: req.body.imageURL
+            image_url: req.body.imageURL,
+            yelp_business_id: req.body.yelp_business_id
         }
     })
     .spread((restaurant, wasCreated)=>{

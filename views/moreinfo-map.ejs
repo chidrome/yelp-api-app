@@ -1,0 +1,13 @@
+<div id='moreinfo-map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiY2hpZHJvbWUiLCJhIjoiY2pxbWt4N3YxMHc3dTQ4bHI4YTZuMHJwNSJ9.C2FzPaz5TVcpwLzvYQAYIg';
+var map = new mapboxgl.Map({
+    container: 'moreinfo-map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [<%= restaurant.long %>, <%= restaurant.lat %> ],
+    zoom: 17.80,
+    pitch: 80,
+    bearing: 17
+});
+
+</script>

@@ -7,10 +7,23 @@
     <div class="col s2">
         <p><strong>Username: </strong><%= userProfile.username %></p>
         <p><strong>Admin Status: </strong><%= userProfile.admin ? 'Admin' : 'User' %></p>
-            <form action="/friends/add" method="POST">
-                <input type="hidden" name="friendId" value="<%= userProfile.id %>">
-                <input type="submit" value="Add Friend">
-            </form>
+
+    <% if (userProfile.friend.length < 1) { %>
+        <form action="/friends/add" method="POST">
+            <input type="hidden" name="friendId" value="<%= userProfile.id %>">
+            <input type="submit" value="Add Friend">
+        </form>
+    <% } else { %>
+        <% userProfile.friend.forEach(f => { %>
+            <% if (f.id = user.id) { %>
+                <form action="/friends/remove" method="POST">
+                    <input type="hidden" name="friendId" value="<%= userProfile.id %>">
+                    <input type="submit" value="Remove Friend">
+                </form>    
+            <% } %>
+        <% }) %>
+    <% } %>
+
     </div>
     <div class="col s4">
         <h5><%= firstCapitalization(userProfile.first_name) %>'s Bio:</h5>

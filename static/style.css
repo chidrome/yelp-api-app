@@ -33,7 +33,6 @@ form {
 #map {
     position: fixed;
     width: 100%;
-    /* margin: 20px auto; */
 	height: 100%;
 	margin-left: -7.5%;
 }
@@ -42,6 +41,12 @@ form {
 	position: fixed;
 	width: 100%;
 	height: 100%;
+}
+
+#moreinfo-map {
+	position: absolute;
+	width: 20rem;
+	height: 20rem;
 }
 
 #home-content {
@@ -129,6 +134,9 @@ form {
 .friends-box {
 	position: absolute;
 	right: 10% !important;
+	padding-top: 1rem !important;
+	padding-bottom: 1rem !important;
+	max-height: 10rem !important;
 }
 
 .restaurant-list, .homepage-results {
@@ -167,4 +175,20 @@ input::placeholder {
 .popupPic {
 	max-width: 18rem;
 	height: auto;
+}
+
+.login-box {
+	margin-bottom: 0 !important;
+}
+
+.address {
+	margin: 0 !important;
+}
+
+.addressTitle {
+	font-weight: 700;
+}
+
+.friends-profile-label {
+	margin-top: 0 !important;
 }
