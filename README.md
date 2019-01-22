@@ -57,3 +57,4 @@ This was app was created from the need to get restaurant recommendations not jus
 1. Use mapbox navgiation to get directional guidance from user's current location.
 2. If @currentLocation for more than 30 mins. and @currentLocation is a restaurant, then ask if the user wants to add this place to his/her favorite restaurant.
 3. Some sort of rating # system derived from 3 categories. Food/Service/Location
+4. Friend suggestions

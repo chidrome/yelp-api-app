@@ -42,12 +42,11 @@
                     <div class="card-stacked">
                         <div class="card-content">
                             <p>Yelp Rating: <%= r.yelp_rating %></p>
-                            <p>Friends Rating: *insert friend ratings here*</p>
                         </div>
                         <div class="card-action">
                             <form action="/restaurants/moreinfo" method="POST">
                                 <input type="hidden" name="restaurantId" value="<%= r.id %>">
-                                <input type="submit" value="More Info">
+                                <input class="btn waves-effect waves-light blue white-text" type="submit" value="More Info">
                             </form>
                         </div>
                     </div>
