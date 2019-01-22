@@ -11,6 +11,15 @@ module.exports = {
       content: {
         type: Sequelize.TEXT
       },
+      userId: {
+        type: Sequelize.INTEGER
+      },
+      first_name: {
+        type: Sequelize.STRING
+      },
+      last_name: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

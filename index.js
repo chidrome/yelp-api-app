@@ -81,7 +81,24 @@ app.post('/search', (req, res)=>{
 					},
 					"properties": {
 						"title": r.name,
-						"description": "<img class='popupPic center' src="+r.image_url+"><br><strong>" + r.name + "</strong><br>" + r.display_phone + "<br>" + r.location.display_address + "<br><a href='/restaurants/moreinfo' restaurantId='" + r.name + "'>More Info</a>",
+						"description": "<img class='popupPic center' src="+r.image_url+"><br><strong>" 
+							+ r.name + "</strong><br>" + r.display_phone + "<br>" 
+							+ r.location.display_address 
+							+ "<br><form method='POST' action='/favorites/add'><input type='hidden' name='restaurantName' value='"
+							+ r.name + "'><input type='hidden' name='address1' value='"
+							+ r.location.address1 + "'><input type='hidden' name='address2' value='"
+							+ r.location.address2 + "'><input type='hidden' name='address3' value='"
+							+ r.location.address3 + "'><input type='hidden' name='city' value='"
+							+ r.location.city + "'><input type='hidden' name='state' value='"
+							+ r.location.state + "'><input type='hidden' name='zip' value='"
+							+ r.location.zip + "'><input type='hidden' name='country' value='"
+							+ r.location.country + "'><input type='hidden' name='phone' value='"
+							+ r.display_phone + "'><input type='hidden' name='lat' value='"
+							+ r.coordinates.latitude + "'><input type='hidden' name='long' value='"
+							+ r.coordinates.longitude + "'><input type='hidden' name='yelpRating' value='"
+							+ r.rating + "'><input type='hidden' name='imageURL' value='"
+							+ r.image_url + "'><input type='hidden' name='yelp_business_id' value='"
+							+ r.id + "'><button class='btn-floating halfway-fab waves-effect waves-light red' type='submit'><i class='material-icons'>add</i></button></form>",
 						"icon": "restaurant"
 					}
 				}

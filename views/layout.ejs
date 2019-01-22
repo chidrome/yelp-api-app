@@ -27,16 +27,16 @@
 	<nav class="blue">
 		<div class="nav-wrapper navbar-transition cool-navbar">
 				<% if(!user) { %>
-					<a href="/auth/signup" class="right">Sign Up</a>
-					<a href="/auth/login" class="right">Login</a>
+					<a href="/auth/signup" class="right layoutAnchors">Sign Up</a>
+					<a href="/auth/login" class="right layoutAnchors">Login</a>
 				<% } else { %>
-					<a href="/auth/logout" class="right">Logout</a>
-					<a href="/favorites" class="right">Favorites</a>
+					<a href="/auth/logout" class="right layoutAnchors">Logout</a>
+					<a href="/friends" class="right layoutAnchors">Find Friends</a>
+					<a href="/favorites" class="right layoutAnchors">Favorites</a>
 					<% if(user.admin) { %>
 						<a href="/profile/admins" class="right">Admin Page</a>
 					<% } %>
-					<a href="/profile" class="right"><%= firstCapitalization(user.first_name) %></a>
-					<a href="/friends" class="right">Friends</a>
+					<a href="/profile" class="right layoutAnchors"><%= firstCapitalization(user.first_name) %></a>
 				<% } %>
 				
 		</div>

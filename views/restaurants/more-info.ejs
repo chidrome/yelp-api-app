@@ -6,10 +6,7 @@
         <h5><%= restaurant.name %></h5>
         <p class="address addressTitle">Addres</p>
         <p class="address"><%= restaurant.address1 %></p>
-        <p class="address"><%= restaurant.address2 %></p>
-        <p class="address"><%= restaurant.address3 %></p>
         <p class="address"><%= restaurant.city %>, <%= restaurant.state %></p>
-        <p class="address"><%= restaurant.zip %></p>
         <p>Phone: <%= restaurant.phone %></p>
     </div>
     <div class="col s4">
@@ -17,5 +14,24 @@
     </div>
 </div>
 
+<div class="row">
+    <form action="/restaurants/comment/add" method="POST">
+        <input type="hidden" name="restaurantId" value="<%= restaurant.id %>">
+        <input type="hidden" name="userId" value="<%= user.id %>">
+        <input type="hidden" name="first_name" value="<%= user.first_name %>">
+        <input type="hidden" name="last_name" value="<%= user.last_name %>">
+        <textarea type="text" name="userReview" id="textarea2" placeholder="Enter your review here" data-length="120"></textarea>
+        <input class="btn waves-effect waves-light blue white-text" type="submit" value="Submit Comment">
+    </form>
+</div>
 
-<h5>Comments:</h5>
+<div class="row">
+    <h5>Comments:</h5>
+    <% restaurant.comments.forEach(comment => { %>
+            <div class="row z-depth-5">
+                <h6 class="comment-name"><%= firstCapitalization(comment.first_name) %> <%= firstCapitalization(comment.last_name) %></h6>
+                <p class="comment-content"><%= comment.content %></p>
+                <small><p><%= comment.createdAt %> </p></small>
+            </div>
+    <% }) %>
+</div>

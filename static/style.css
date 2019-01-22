@@ -136,7 +136,15 @@ form {
 	right: 10% !important;
 	padding-top: 1rem !important;
 	padding-bottom: 1rem !important;
-	max-height: 10rem !important;
+	max-height: 14.78rem !important;
+	overflow: scroll !important;
+}
+
+.friends-list {
+	margin-bottom: 0 !important;
+	max-height: 170px !important;
+	padding-left: 1rem !important;
+	padding-top: 0 !important;
 }
 
 .restaurant-list, .homepage-results {
@@ -185,10 +193,23 @@ input::placeholder {
 	margin: 0 !important;
 }
 
-.addressTitle {
+.addressTitle, .comment-name {
 	font-weight: 700;
 }
 
-.friends-profile-label {
+.friends-profile-label, .comment-content {
 	margin-top: 0 !important;
+}
+
+.comment-content{
+	font-size: 20px !important;
+}
+
+.friends-profile-label {
+	font-weight: 700;
+	margin-bottom: 7px;
+}
+
+.layoutAnchors {
+	font-size: 22px !important;
 }

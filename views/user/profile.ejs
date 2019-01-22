@@ -20,16 +20,18 @@
     </div>
     <div class="col s3 z-depth-5 friends-box">
         <p class="friends-profile-label">Friends</p>
-        <% if(friends && friends.length > 0){ %>
-            <% friends.forEach((friend) => { %>
-                <form action="/profile/friends/<%= firstCapitalization(friend.first_name) %><%= firstCapitalization(friend.last_name) %>" method="POST">
-                    <input type="hidden" name="friendUserId" value="<%= friend.id %>">
-                    <input class="profileButton" type="submit" value="<%= firstCapitalization(friend.first_name) %> <%= firstCapitalization(friend.last_name) %>">
-                </form>
-            <% }) %>
-        <% } else { %>
-            No friends :(
-        <% } %>
+        <div class="row friends-list">
+            <% if(friends && friends.length > 0){ %>
+                <% friends.forEach((friend) => { %>
+                    <form action="/profile/friends/<%= firstCapitalization(friend.first_name) %><%= firstCapitalization(friend.last_name) %>" method="POST">
+                        <input type="hidden" name="friendUserId" value="<%= friend.id %>">
+                        <input class="profileButton" type="submit" value="<%= firstCapitalization(friend.first_name) %> <%= firstCapitalization(friend.last_name) %>">
+                    </form>
+                <% }) %>
+            <% } else { %>
+                No friends :(
+            <% } %>
+        </div>
     </div>
 </div>
 
@@ -44,13 +46,22 @@
                 </div>
                 <div class="card-stacked">
                     <div class="card-content">
-                        <p>Yelp Rating: <%= r.yelp_rating %></p>
-                        <p>Friends Rating: *insert friend ratings here*</p>
+                        <div class="right">
+                            <img class="yelp-logo" src="../img/Yelp_trademark_RGB.png">
+                        </div>
+                        <p>Rating: <%= r.yelp_rating %></p>
+
                     </div>
                     <div class="card-action">
                         <form action="/restaurants/moreinfo" method="POST">
+                            <input type="hidden" name="userId" value="<%= currentUser %>">
                             <input type="hidden" name="restaurantId" value="<%= r.id %>">
-                            <input type="submit" value="More Info">
+                            <input class="btn waves-effect waves-light blue white-text" type="submit" value="More Info">
+                        </form>
+                        <form action="/favorites/restaurant/remove" method="POST">
+                            <input type="hidden" name="userId" value="<%= currentUser %>">
+                            <input type="hidden" name="restaurantId" value="<%= r.id %>">
+                            <input class="profileButton" type="submit" value="Remove">
                         </form>
                     </div>
                 </div>

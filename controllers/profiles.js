@@ -24,12 +24,11 @@ router.get('/', loggedIn, (req, res)=>{
         })
         .then((user)=>{
             var foundFriend = ''
-            res.render('user/profile', {restaurants: foundUser.restaurants, friends: user.friend, foundFriend: foundFriend})
+            res.render('user/profile', {restaurants: foundUser.restaurants, friends: user.friend, foundFriend: foundFriend, currentUser: foundUser.id })
         })
         .catch((error)=>{
             console.log('ERROR finding users!', error)
         })
-        
     })
     .catch((error)=>{
         console.log('ERROR finding user!', error)

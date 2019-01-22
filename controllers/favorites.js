@@ -80,6 +80,27 @@ router.post('/add', loggedIn, (req, res)=>{
     })
 })
 
+// delete a restaurant from your favorites
+router.post('/restaurant/remove', loggedIn, (req, res)=>{
+    db.restaurant.findOne({
+        where: {
+            id: req.body.restaurantId
+        }
+    })
+    .then((restaurant)=>{
+        db.user.findById(req.user.id)
+        .then((foundUser)=>{
+            restaurant.removeUser(foundUser)
+            res.redirect('/favorites')
+        })
+        .catch((error)=>{
+            console.log('ERROR adding into restaurantUsers table', error)
+        })
+    })
+    .catch((error)=>{
+        console.log('ERROR adding/finding favorite', error)
+    })
+})
 
 
 

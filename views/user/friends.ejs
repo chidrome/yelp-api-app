@@ -5,7 +5,7 @@
                 <input type="text" name="friendEmail" placeholder="Email" required>
             </div>
         </div>
-        <input type="submit" value="Search">
+        <input class="btn waves-effect waves-light blue white-text" type="submit" value="Search">
     </form>
 
 <h3>Found Friends:</h3>
@@ -16,18 +16,4 @@
         <input type="hidden" name="friendUserId" value="<%= foundFriend.id %>">
         <input class="profileButton" type="submit" value="<%= firstCapitalization(foundFriend.first_name) %> <%= firstCapitalization(foundFriend.last_name) %>">
     </form>
-<% } %>
-
-
-<h3>My friends will go here</h3>
-
-<% if(friends && friends.length > 0){ %>
-    <% friends.forEach((friend) => { %>
-        <form action="/profile/friends/<%= firstCapitalization(friend.first_name) %><%= firstCapitalization(friend.last_name) %>" method="POST">
-            <input type="hidden" name="friendUserId" value="<%= friend.id %>">
-            <input class="profileButton" type="submit" value="<%= firstCapitalization(friend.first_name) %> <%= firstCapitalization(friend.last_name) %>">
-        </form>
-    <% }) %>
-<% } else { %>
-    No friends :(
 <% } %>

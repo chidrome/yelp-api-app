@@ -14,14 +14,12 @@
             <input type="submit" value="Add Friend">
         </form>
     <% } else { %>
-        <% userProfile.friend.forEach(f => { %>
-            <% if (f.id = user.id) { %>
+            <% if (userProfile.friend[0] = user.id) { %>
                 <form action="/friends/remove" method="POST">
                     <input type="hidden" name="friendId" value="<%= userProfile.id %>">
                     <input type="submit" value="Remove Friend">
                 </form>    
             <% } %>
-        <% }) %>
     <% } %>
 
     </div>
@@ -47,7 +45,10 @@
                             <p>Friends Rating: *insert friend ratings here*</p>
                         </div>
                         <div class="card-action">
-                            <a href="#">More Info</a>
+                            <form action="/restaurants/moreinfo" method="POST">
+                                <input type="hidden" name="restaurantId" value="<%= r.id %>">
+                                <input type="submit" value="More Info">
+                            </form>
                         </div>
                     </div>
                 </div>

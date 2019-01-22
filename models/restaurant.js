@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   restaurant.associate = function(models) {
     // associations can be defined here
     models.restaurant.belongsToMany(models.user, { through: 'restaurantUser' })
+    models.restaurant.belongsToMany(models.comment, { through: 'restaurantUser' })
 
   };
   return restaurant;

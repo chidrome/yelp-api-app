@@ -44,6 +44,7 @@ module.exports = (sequelize, DataTypes) => {
     // associations can be defined here
     models.user.belongsToMany(models.restaurant, { through: 'restaurantUser' })
     models.user.belongsToMany(models.user, { as: 'friend', through: 'userFriend' })
+    models.user.belongsToMany(models.comment, { through: 'restaurantUser' })
   };
   user.prototype.validPassword = function(typedPassword){
     return bcrypt.compareSync(typedPassword, this.password);
